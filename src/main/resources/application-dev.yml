@@ -1,0 +1,29 @@
+spring:
+  config:
+    activate:
+      on-profile:
+        - dev
+  datasource:
+    driverClassName: org.postgresql.Driver
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    url: jdbc:postgresql://${SPRING_DATASOURCE_HOST}:${SPRING_DATASOURCE_PORT}/${SPRING_DATASOURCE_DB}
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+password-regex: "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@#$%^&*!])[A-Za-z\\d@#$%^&*!]{8,}$"
+
+logging:
+  charset:
+    console: "UTF-8"
+    file: "UTF-8"
+  file:
+    name: /var/log
+  level:
+    root: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'health'
